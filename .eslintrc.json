@@ -1,0 +1,116 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true,
+        "node": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended"
+    ],
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react"
+    ],
+    "rules": {
+        "react/jsx-uses-react": "error",
+        "react/jsx-uses-vars": "error",
+        "indent": [
+            "error",
+            4,
+            {
+                "SwitchCase": 1
+            }
+        ],
+        "quotes": [
+            "error",
+            "single"
+        ],
+        "semi": [
+            "error",
+            "always"
+        ],
+        "spaced-comment": [
+            "error",
+            "always"
+        ],
+        "space-in-parens": [
+            "error",
+            "always"
+        ],
+        "max-len": [
+            "error",
+            {
+                "code": 200,
+                "ignoreComments": true
+            }
+        ]
+    },
+    "overrides": [
+        {
+            "files": ["client/src/**"],
+            "rules": {
+                "no-console": [
+                    "error"
+                ]
+            }
+        }
+    ],
+    "settings": {
+        "react": {
+          "createClass": "createReactClass", 
+          "pragma": "React",
+          "fragment": "Fragment", 
+          "version": "detect",
+          "flowVersion": "0.53"
+        },
+        "propWrapperFunctions": [
+            "forbidExtraProps",
+            {
+                "property": "freeze", 
+                "object": "Object"
+            },
+            {
+                "property": "myFavoriteWrapper"
+            },
+            {
+                "property": "forbidExtraProps", 
+                "exact": true
+            }
+        ],
+        "componentWrapperFunctions": [
+            "observer",
+            {
+                "property": "styled"
+            },
+            {
+                "property": "observer", 
+                "object": "Mobx"
+            },
+            {
+                "property": "observer", 
+                "object": "<pragma>"
+            }
+        ],
+        "formComponents": [
+            "CustomForm",
+            {
+                "name": "Form", 
+                "formAttribute": "endpoint"
+            }
+        ],
+        "linkComponents": [
+            "Hyperlink",
+            {
+              "name": "Link", 
+              "linkAttribute": "to"
+            }
+        ]
+      }
+}
