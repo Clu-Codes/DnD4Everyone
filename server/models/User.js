@@ -32,8 +32,7 @@ User.init(
         }
     },
     {
-        // Table Config Options
-        sequelize, // imported sequelize connection
+        sequelize,
         timestamps: false,
         freezeTableName: true,
         underscored: true,
