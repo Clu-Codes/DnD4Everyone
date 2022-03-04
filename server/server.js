@@ -25,3 +25,5 @@ sequelize.sync({ force: false })
             console.log(`API server running on port ${PORT}!`);
         });
     });
+
+    // Still unsure if the routes work - they need to be tested in Postman.  
