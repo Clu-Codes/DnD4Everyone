@@ -5,14 +5,10 @@ const resolvers = {
         allUsers: async () => {
             return User.findAll();
         },
-        user: async (parent, args, context) => {
-            if (context.user) {
-                const user = await User.findByPk(context.user._id);
-                
-                return user;
-            }
-
-            return null;
+        showUserById: async (parent, { id }) => {
+            const user = await User.findByPk(id);
+            
+            return user;
         },
     },
     Mutation: {
@@ -21,6 +17,13 @@ const resolvers = {
 
             return user;
         },
+        destroyUser: async (parent, { id }) => {
+            return User.destroy({
+                where: {
+                    id
+                }
+            });
+        }
     },
 };
 
