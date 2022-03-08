@@ -1,8 +1,11 @@
-const { User } = require('../models/');
+const { User } = require('../models');
 
 const resolvers = {
     Query: {
-        user: async(parent, args, context) => {
+        allUsers: async () => {
+            return User.findAll();
+        },
+        user: async (parent, args, context) => {
             if (context.user) {
                 const user = await User.findByPk(context.user._id);
                 
@@ -13,7 +16,7 @@ const resolvers = {
         },
     },
     Mutation: {
-        addUser: async(parent, args) => {
+        addUser: async (parent, args) => {
             const user = await User.create(args);
 
             return user;
