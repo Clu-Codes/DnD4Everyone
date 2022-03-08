@@ -1,10 +1,8 @@
-const path = require('path');
-
-const express = require('express');
-const { ApolloServer } = require('apollo-server-express');
-
-const sequelize = require('./config/connection');
-const { typeDefs, resolvers } = require('./schemas/');
+import path from 'path';
+import express from 'express';
+import { ApolloServer } from 'apollo-server-express';
+import sequelize from './config/connection.js';
+import { resolvers, typeDefs } from './schemas/index.js';
 
 const PORT = process.env.PORT || 3001;
 const app = express();

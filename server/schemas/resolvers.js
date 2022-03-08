@@ -1,4 +1,4 @@
-const { User } = require('../models');
+import { User } from '../models/index.js';
 
 const resolvers = {
     Query: {
@@ -27,4 +27,4 @@ const resolvers = {
     },
 };
 
-module.exports = resolvers;
+export default resolvers;
