@@ -12,13 +12,13 @@ const resolvers = {
             return null;
         },
     },
-    // Mutation: {
-    //     addUser: async(parent, args) => {
-    //         const user = await User.create(args);
+    Mutation: {
+        addUser: async(parent, args) => {
+            const user = await User.create(args);
 
-    //         return user;
-    //     },
-    // },
+            return user;
+        },
+    },
 };
 
 module.exports = resolvers;
