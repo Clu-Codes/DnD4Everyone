@@ -1,4 +1,6 @@
-import resolvers from './resolvers.js';
-import typeDefs from './typeDefs.js';
+import { createApplication } from 'graphql-modules';
+import { userModule } from './userModule.js';
 
-export { resolvers, typeDefs };
+export const application = createApplication({
+    modules: [userModule]
+});

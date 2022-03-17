@@ -27,9 +27,6 @@
         "eslint": "^8.8.0"
     },
     "dependencies": {
-        "eslint-plugin-react": "^7.28.0",
-        "apollo-server": "^3.6.3",
-        "dotenv": "^16.0.0",
-        "graphql": "^16.3.0"
+        "eslint-plugin-react": "^7.28.0"
     }
 }

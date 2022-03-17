@@ -1,8 +1,8 @@
 import path from 'path';
 import express from 'express';
 import { ApolloServer } from 'apollo-server-express';
+import { application } from './schemas/index.js';
 import sequelize from './config/connection.js';
-import { resolvers, typeDefs } from './schemas/index.js';
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -10,9 +10,10 @@ const app = express();
 let apolloServer = null;
 
 async function startServer() {
+    const schema = application.createSchemaForApollo();
+
     apolloServer = new ApolloServer({
-        typeDefs,
-        resolvers,
+        schema,
     });
     
     await apolloServer.start();
