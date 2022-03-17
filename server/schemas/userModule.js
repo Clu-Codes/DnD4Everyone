@@ -1,10 +1,6 @@
-import path from 'path';
-import { fileURLToPath } from 'url';
 import { createModule, gql } from 'graphql-modules';
+import { __dirname } from '../utils/index.js';
 import { User } from '../models/index.js';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 export const userModule = createModule({
     id: 'user-module',
