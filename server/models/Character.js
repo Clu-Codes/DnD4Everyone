@@ -21,7 +21,7 @@ const Character = sequelize.define(
         //Maybe make these two separate columns: Lawful, Neutral, Chaotic & Good, Neutral, Evil
         alignments: {
             type: DataTypes.ENUM,
-            values: [lawfulGood, lawfulNeutral, lawfulEvil, neutralGood, trueNeutral, neutralEvil, chaoticGood, chaoticNeutral, chaoticEvil],
+            values: ['lawfulGood', 'lawfulNeutral', 'lawfulEvil', 'neutralGood', 'trueNeutral', 'neutralEvil', 'chaoticGood', 'chaoticNeutral', 'chaoticEvil'],
             allowNull: false
         },
         experience_points: {

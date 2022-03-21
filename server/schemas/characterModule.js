@@ -1,54 +1,61 @@
 import { createModule, gql } from 'graphql-modules';
 import { __dirname } from '../utils/index.js';
-import { User } from '../models/index.js';
+import { Character } from '../models/index.js';
 
-export const userModule = createModule({
-    // look into GraphQL ENUMS for alignments
-    // enum Alignment {
-
-    // }
-
+export const characterModule = createModule({
     id: 'character-module',
     dirname: __dirname,
     typeDefs: [
         gql`
+            enum ALIGNMENT {
+                lawfulGood
+                lawfulNeutral
+                lawfulEvil
+                neutralGood
+                trueNeutral
+                neutralEvil
+                chaoticGood
+                chaoticNeutral
+                chaoticEvil
+            }
+
             type Character {
                 id: ID
                 name: String
                 level: Int
-                alignments: Enum
+                alignments: ALIGNMENT
                 experience_points: Int
                 armor_class: Int
             }
         
             type Query {
                 showCharacterById(id: ID!): Character
-                allCharacters: [Characters]
+                allCharacters: [Character]
             }
         
             type Mutation {
-                addCharacter(name: String!, level: int!, alignments: !): User
+                addCharacter(name: String!, level: Int!, alignments: ALIGNMENT!, experience_points: Int!, armor_class: Int!): Character
                 destroyCharacter(id: ID!): Character
             }
         `
     ],
     resolvers: {
         Query: {
-            allUsers: () => User.findAll(),
-            showUserById: async (parent, { id }) => {
-                const user = await User.findByPk(id);
+            allCharacters: () => Character.findAll(),
+            showCharacterById: async (parent, { id }) => {
+                const character = await Character.findByPk(id);
                 
-                return user;
+                return character;
             },
         },
         Mutation: {
-            addUser: async (parent, args) => {
-                const user = await User.create(args);
+            addCharacter: async (parent, args) => {
+                const character = await Character.create(args);
     
-                return user;
+                return character;
             },
-            destroyUser: async (parent, { id }) => {
-                return User.destroy({
+            destroyCharacter: async (parent, { id }) => {
+                return Character.destroy({
                     where: {
                         id
                     }
