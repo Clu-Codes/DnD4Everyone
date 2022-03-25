@@ -1,8 +1,8 @@
 import { DataTypes } from 'sequelize';
 import sequelize from '../config/connection.js';
 
-const User = sequelize.define(
-    'users', 
+const Ability = sequelize.define(
+    'abilities', 
     {
         id: {
             type: DataTypes.INTEGER,
@@ -10,33 +10,26 @@ const User = sequelize.define(
             primaryKey: true,
             autoIncrement: true,
         },
-        username: {
+        description: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        email: {
+        short_description: {
             type: DataTypes.STRING,
             allowNull: false,
             unique: true,
             validate: {
-                isEmail: true,
+                isEmail: true
             }
         },
-        password: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                len: [10, 50],
-            }
-        }
     },
     {
         sequelize,
         timestamps: true,
         freezeTableName: true,
         underscored: true,
-        modelName: 'user',
+        modelName: 'ability',
     }
 );
 
-export default User;
+export default Ability;
