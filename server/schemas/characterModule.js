@@ -23,7 +23,7 @@ export const characterModule = createModule({
                 id: ID
                 name: String
                 level: Int
-                alignments: ALIGNMENT
+                alignment: ALIGNMENT
                 experience_points: Int
                 armor_class: Int
             }
@@ -34,8 +34,8 @@ export const characterModule = createModule({
             }
         
             type Mutation {
-                addCharacter(name: String!, level: Int!, alignments: ALIGNMENT!, experience_points: Int!, armor_class: Int!): Character
-                updateCharacter(id: ID!, level: Int!, experience_points: Int!, armor_class: Int!): Character
+                addCharacter(name: String!, level: Int!, alignment: ALIGNMENT!, experience_points: Int!, armor_class: Int!): Character
+                updateCharacter(id: ID!, name: String, alignment: ALIGNMENT, level: Int, experience_points: Int, armor_class: Int): Character
                 destroyCharacter(id: ID!): Character
             }
         `
@@ -55,15 +55,14 @@ export const characterModule = createModule({
     
                 return character;
             },
-            updateCharacter: async (parent, {id, level, experience, armor_class}) => {
-                return Character.update({
+            updateCharacter: async (parent, args) => {
+                const character = await Character.update(args, {
                     where: {
-                        id
-                    },
-                    level: level,
-                    experience: experience,
-                    armor_class: armor_class      
+                        id: args.id
+                    }
                 });
+
+                return character;
             },
             destroyCharacter: async (parent, { id }) => {
                 return Character.destroy({

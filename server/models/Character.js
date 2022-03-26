@@ -17,8 +17,9 @@ const Character = sequelize.define(
         level: {
             type: DataTypes.INTEGER,
             allowNull: false,
+            defaultValue: 1
         }, 
-        alignments: {
+        alignment: {
             type: DataTypes.ENUM,
             values: ['lawfulGood', 'lawfulNeutral', 'lawfulEvil', 'neutralGood', 'trueNeutral', 'neutralEvil', 'chaoticGood', 'chaoticNeutral', 'chaoticEvil'],
             allowNull: false
