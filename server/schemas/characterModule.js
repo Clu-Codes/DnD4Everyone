@@ -1,6 +1,7 @@
 import { createModule, gql } from 'graphql-modules';
 import { __dirname } from '../utils/index.js';
 import { Character } from '../models/index.js';
+import { User } from '../models/index.js';
 
 export const characterModule = createModule({
     id: 'character-module',
@@ -21,6 +22,7 @@ export const characterModule = createModule({
 
             type Character {
                 id: ID
+                user: User
                 name: String
                 level: Int
                 alignment: ALIGNMENT
