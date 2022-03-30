@@ -1,6 +1,7 @@
 import { createModule, gql } from 'graphql-modules';
 import { __dirname } from '../utils/index.js';
 import { User } from '../models/index.js';
+import { Character } from '../models/index.js';
 
 export const userModule = createModule({
     id: 'user-module',
@@ -11,6 +12,7 @@ export const userModule = createModule({
                 id: ID
                 email: String
                 username: String
+                characters: [Character]
             }
         
             type Query {
@@ -26,9 +28,9 @@ export const userModule = createModule({
     ],
     resolvers: {
         Query: {
-            allUsers: () => User.findAll(),
+            allUsers: () => User.findAll({include: Character}),
             showUserById: async (parent, { id }) => {
-                const user = await User.findByPk(id);
+                const user = await User.findByPk(id, {include: Character});
                 
                 return user;
             },
