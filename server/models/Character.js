@@ -2,7 +2,7 @@ import { DataTypes } from 'sequelize';
 import sequelize from '../config/connection.js';
 
 const Character = sequelize.define(
-    'Character',
+    'characters',
     {
         id: {
             type: DataTypes.INTEGER,
@@ -34,7 +34,7 @@ const Character = sequelize.define(
         user_id: {
             type: DataTypes.INTEGER,
             references: {
-                model: 'user',
+                model: 'users',
                 key: 'id'
             }
         },
@@ -44,7 +44,7 @@ const Character = sequelize.define(
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'character',
+        modelName: 'characters',
     }
 )
 

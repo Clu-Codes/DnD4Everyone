@@ -28,9 +28,9 @@ export const userModule = createModule({
     ],
     resolvers: {
         Query: {
-            allUsers: () => User.findAll(),
+            allUsers: () => User.findAll({include: Character}),
             showUserById: async (parent, { id }) => {
-                const user = await User.findByPk(id);
+                const user = await User.findByPk(id, {include: Character});
                 
                 return user;
             },

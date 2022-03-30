@@ -1,7 +1,7 @@
 import { createModule, gql } from 'graphql-modules';
 import { __dirname } from '../utils/index.js';
 import { Character } from '../models/index.js';
-import { User } from '../models/index.js';
+
 
 export const characterModule = createModule({
     id: 'character-module',
@@ -22,12 +22,12 @@ export const characterModule = createModule({
 
             type Character {
                 id: ID
-                user: User
                 name: String
                 level: Int
                 alignment: ALIGNMENT
                 experience_points: Int
                 armor_class: Int
+                user_id: Int
             }
         
             type Query {
@@ -36,7 +36,7 @@ export const characterModule = createModule({
             }
         
             type Mutation {
-                addCharacter(name: String!, level: Int!, alignment: ALIGNMENT!, experience_points: Int!, armor_class: Int!): Character
+                addCharacter(name: String!, level: Int!, alignment: ALIGNMENT!, experience_points: Int!, armor_class: Int!, user_id: Int!): Character
                 updateCharacter(id: ID!, name: String, alignment: ALIGNMENT, level: Int, experience_points: Int, armor_class: Int): Character
                 destroyCharacter(id: ID!): Character
             }
@@ -52,9 +52,9 @@ export const characterModule = createModule({
             },
         },
         Mutation: {
-            addCharacter: async (parent, args) => {
+            addCharacter: async (parent, args) => { 
                 const character = await Character.create(args);
-    
+
                 return character;
             },
             updateCharacter: async (parent, args) => {
