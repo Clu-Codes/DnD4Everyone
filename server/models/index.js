@@ -1,3 +1,4 @@
+import Ability from './Ability.js';
 import User from './User.js';
 import Character from './Character.js';
 
@@ -10,6 +11,7 @@ Character.belongsTo(User, {
 })
 
 export {
+    Ability,
     User,
     Character
 };
